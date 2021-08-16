@@ -22,4 +22,4 @@ $ npm start
 * Jest (for testing)
 ### Contributors 🤝:
 * Enmanuel Lassis [@elassis](https://github.com/elassis)
-* Juan Luis Gonzalez Giron[JbirdL86](https://github.com/JbirdL86)
+* Juan Luis Gonzalez Giron [@JbirdL86](https://github.com/JbirdL86)
