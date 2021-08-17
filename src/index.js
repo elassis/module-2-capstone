@@ -1,7 +1,7 @@
-import './style.css'; 
+import './style.css';
 
 const component = () => {
-   console.log('works') 
-} 
+  console.log('works')
+}
 
-component(); 
+component();
