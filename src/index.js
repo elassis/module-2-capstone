@@ -1,7 +1,8 @@
 import './style.css'; 
+import renderHomePage from './homepage';
 
 const component = () => {
-   console.log('works') 
+   renderHomePage();
 } 
 
 component(); 
