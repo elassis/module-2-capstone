@@ -1,42 +1,23 @@
 
-const arrElements = [
-  {
-    id:0,
-    title: "item 1",
-    img:"hello"
-  },
-  {
-    id:1,
-    title: "item 2",
-    img:"hello2"
-  },
-  {
-    id:2,
-    title: "item 3",
-    img:"hello3"
-  }
-]
-
 const renderHomePage = () => {
-  let arr = Array.from(arrElements);
-  let counterLikes = 3;
   document.body.innerHTML = `<nav>
    <ul class="nav-bar">
     <li class="logo"></li>
-    <li class="items">Shows (${arr.length})</li>
+    <li class="items">Shows (<p id="shows-counter"></p>)</li>
    </ul> 
   </nav>
   
   <div class="container">
   </div>`;
-
-  arr.forEach((show)=>{
-    const container = document.querySelector('.container');
-    const element = `<div id=${show.id} class="show-container">
+}
+const renderElement = (element) =>{
+  let counterLikes = 3;
+  const container = document.querySelector('.container');
+  const htmlElement = `<div id=${element.id} class="show-container">
                       <ul class="data-ul">
-                        <li class="img"><p>${show.img}</p></li>
+                        <li class="img"><img src="${element.image.medium}"></li>
                         <li class="like-title">
-                          <p>Title: ${show.title}</p>
+                          <p>Title: ${element.name}</p>
                           <div class="like-section">
                             <button><i class="fas fa-heart"></i></button>
                             <p class="like-text">Like ${counterLikes}</p>
@@ -46,9 +27,7 @@ const renderHomePage = () => {
                           <button class="comment-btn">Comment</button></li>
                       </ul>
                     </div>`;
-                    container.innerHTML += element;
-  })
-
+  container.innerHTML += htmlElement;
 }
 
-export default renderHomePage;
+export { renderHomePage, renderElement };
