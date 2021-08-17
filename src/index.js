@@ -1,13 +1,8 @@
-import _ from 'lodash';
-import './style.css';
+import './style.css'; 
+import renderHomePage from './homepage';
 
-function component() {
-  const element = document.createElement('div');
+const component = () => {
+   renderHomePage();
+} 
 
- // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+component(); 
