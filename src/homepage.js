@@ -10,7 +10,7 @@ const renderHomePage = () => {
   <div class="container">
   </div>`;
 }
-const renderElement = (element) =>{
+const renderElement = (element,idMicroverse) =>{
   let counterLikes = 3;
   const container = document.querySelector('.container');
   const htmlElement = `<div id=${element.id} class="show-container">
@@ -19,7 +19,7 @@ const renderElement = (element) =>{
                         <li class="like-title">
                           <p>Title: ${element.name}</p>
                           <div class="like-section">
-                            <button><i class="fas fa-heart"></i></button>
+                            <button><i id="${idMicroverse}" class="fas fa-heart"></i></button>
                             <p class="like-text">Like ${counterLikes}</p>
                           </div>                          
                         </li> 
