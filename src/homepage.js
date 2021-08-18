@@ -11,7 +11,7 @@ const renderHomePage = () => {
   </div>`;
 }
 const renderElement = (element,idMicroverse) =>{
-  let counterLikes = 3;
+ 
   const container = document.querySelector('.container');
   const htmlElement = `<div id=${element.id} class="show-container">
                       <ul class="data-ul">
@@ -20,7 +20,7 @@ const renderElement = (element,idMicroverse) =>{
                           <p>Title: ${element.name}</p>
                           <div class="like-section">
                             <button><i id="${idMicroverse}" class="fas fa-heart"></i></button>
-                            <p class="like-text">Like ${counterLikes}</p>
+                            <p class="like-text ${idMicroverse}"> likes 0</p>
                           </div>                          
                         </li> 
                         <li class="comment-cont">

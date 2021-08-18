@@ -7,4 +7,21 @@ const listeners = () =>{
   })
 }
 
-export default listeners;
+const showLikes = (arr) =>{
+  const showsArr = Array.from(arr);
+  const containersArr = document.querySelectorAll('.like-text');
+  showsArr.forEach((show)=>{
+    containersArr.forEach((container)=>{
+      if(container.className.includes(show.item_id)){
+        container.innerHTML = '';
+        container.innerHTML = `Likes ${show.likes}`
+      }
+    })
+  })
+  
+  
+
+
+}
+
+export {listeners,showLikes};

@@ -1,4 +1,5 @@
 import {renderElement} from "./homepage.js";
+import { showLikes } from "./handlers.js";
 const obArr = [
   {
     id:0,
@@ -34,10 +35,13 @@ const obArr = [
 ]
 const Movies = {
   init: ()=>{
-    document.querySelector('#shows-counter').innerHTML = obArr.length
+    Movies.showItemsCounter(obArr);
     Movies.getShows(obArr);
     Movies.getLikes();
   
+  },
+  showItemsCounter:(arr)=>{
+    document.querySelector('#shows-counter').innerHTML = arr.length;
   },
   getShows:(objArr)=>{
     const arr = Array.from(objArr);
@@ -56,14 +60,19 @@ const Movies = {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    }).then(response => console.log(response));
+    }).then(response => Movies.refreshLikeOnClick(response.status));
   },
   getLikes:()=>{
-    fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/likes/',{
+     fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/likes/',{
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    }).then(response => response.json()).then(json => console.log(json));
+    }).then(response => response.json()).then(json => showLikes(json));
+  },
+  refreshLikeOnClick:(status)=>{
+    if(status === 201){
+      Movies.getLikes();
+    }
   }
 }
 
