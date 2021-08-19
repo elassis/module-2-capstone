@@ -1,5 +1,9 @@
-*{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   list-style-type: none;
+  text-decoration: none;
 }
 body{
   margin:0;
@@ -105,6 +109,111 @@ nav{
 }
 p.like-text{
   margin: 0;
+}
+button {
+  cursor:pointer;
+}
+
+.item-popup {
+  position: fixed;
+  width: 90%;
+  height: 93vh;
+  top: 5vh;
+  left: 5%;
+  background-color: aqua;
+  overflow-y: auto;
+}
+
+.popup-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.popup-header {
+  display: flex;
+}
+
+.popup-img {
+  width: 100%;
+  height: 25vh;
+}
+
+.close-icon {
+  cursor: pointer;
+  position: fixed;
+  right: 7%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.popup-details {
+  text-align: center;
+  margin-top: 1vh;
+  width: 60%;
+}
+
+.popup-specs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1vh;
+}
+
+.popup-info {
+  margin-top: 1vh;
+}
+
+.comments-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.comment-count {
+  margin-left: 5px;
+}
+
+.popup-comments {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 1vh;
+}
+
+.comment {
+  margin-bottom: 1vh;
+  align-self: flex-start;
+}
+
+.add-comment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1vh;
+}
+
+#name {
+  margin-bottom: 1vh;
+  width: 60%;
+  padding: 5px;
+  border: none;
+}
+
+#input-comment {
+  margin-bottom: 1vh;
+  height: 10vh;
+  padding: 5px;
+  border: none;
+}
+
+#submit-comment {
+  padding: 4px 4px;
+  align-self: flex-start;
+  background-color: coral;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 @media (max-width:900px){
