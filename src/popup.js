@@ -51,19 +51,7 @@ const renderPopup = (tvShow, id, commentArr) => {
     </article>`;
 
     document.body.appendChild(poPup);
-
-    refresh(commentArr);
-
-
-    // const commentsContainer = document.querySelector('.popup-comments');
-    // commentsContainer.innerHTML = '';
-    // commentArr.forEach(element => {
-    //   const p = document.createElement('p');
-    //   p.classList.add('comment')
-    //   p.innerHTML = `${element.creation_date} ${element.username}: ${element.comment}`;
-    //   commentsContainer.appendChild(p);
-    // });
-    
+    refresh(commentArr); 
 }
 
 export default renderPopup;
