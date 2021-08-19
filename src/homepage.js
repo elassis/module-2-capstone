@@ -1,4 +1,3 @@
-
 const renderHomePage = () => {
   document.body.innerHTML = `<nav>
    <ul class="nav-bar">
@@ -12,10 +11,8 @@ const renderHomePage = () => {
   <footer>
     <p class="text-footer">Microverse - All rights Reserved 2021</p>
   </footer>`;
-  
-}
-const renderElement = (element,idMicroverse) =>{
- 
+};
+const renderElement = (element, idMicroverse) => {
   const container = document.querySelector('.container');
   const htmlElement = `<div id=${element.id} class="show-container">
                       <ul class="data-ul">
@@ -33,6 +30,6 @@ const renderElement = (element,idMicroverse) =>{
                       </ul>
                     </div>`;
   container.innerHTML += htmlElement;
-}
+};
 
 export { renderHomePage, renderElement };

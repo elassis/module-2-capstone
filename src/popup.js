@@ -1,4 +1,17 @@
-import { refresh } from "./handlers";
+const refresh = (commentArr) => {
+  const commentsContainer = document.querySelector('.popup-comments');
+  const commentCount = document.querySelector('.comment-count');
+
+  commentCount.innerHTML = '';
+  commentCount.innerHTML = commentArr.length;
+  commentsContainer.innerHTML = '';
+  commentArr.forEach((element) => {
+    const p = document.createElement('p');
+    p.classList.add('comment');
+    p.innerHTML = `${element.creation_date} ${element.username}: ${element.comment}`;
+    commentsContainer.appendChild(p);
+  });
+};
 
 const renderPopup = (tvShow, id, commentArr) => {
   const poPup = document.createElement('section');
@@ -50,8 +63,8 @@ const renderPopup = (tvShow, id, commentArr) => {
     </div>
     </article>`;
 
-    document.body.appendChild(poPup);
-    refresh(commentArr); 
-}
+  document.body.appendChild(poPup);
+  refresh(commentArr);
+};
 
-export default renderPopup;
+export { renderPopup, refresh };
