@@ -26,8 +26,8 @@ const listeners = () =>{
       comment.value = '';
     }
     if(e.target.className === 'close-icon'){
-      const popup = document.querySelector('.item-popup');
-      popup.remove();
+      const popupContainer = document.querySelector('#popup');
+      popupContainer.remove();
     }
     if(e.target.id === 'test'){
         showComments();

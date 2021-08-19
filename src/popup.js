@@ -27,7 +27,7 @@ const renderPopup = (tvShow, id, commentArr) => {
         <div class="popup-details">
             <div class="comments-container">
               <h3>Comments</h3>
-              <p class="comment-count">${commentArr.length}</p>
+              <p class="comment-count"></p>
             </div>
             <div class="popup-info">
                 <div class="popup-comments">

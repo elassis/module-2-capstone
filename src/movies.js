@@ -82,7 +82,10 @@ const Movies = {
     const urlReq = `https://api.tvmaze.com/singlesearch/shows?q=${movieName}`;
       fetch(urlReq)
       .then(response => response.json())
-      .then((data) => { renderPopup(data, id, commentArr); })
+      .then((data) => {
+        renderPopup(data, id, commentArr);
+        Movies.showCommentCounter(commentArr);
+      })
   
   },
   getComments: async (movieName, id) => {
@@ -97,7 +100,12 @@ const Movies = {
      headers: {
        'Content-type': 'application/json; charset=UTF-8',
      },
-    }).then((response)=>response.json()).then((json)=> {refresh(json);}); 
+    })
+    .then((response)=>response.json())
+    .then((json)=> {
+      refresh(json);
+      Movies.showCommentCounter(json);
+    }); 
  },
   addComment: async (id, userName, userComment) => {
     const urlReq = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments';
@@ -112,6 +120,13 @@ const Movies = {
         comment: `${userComment}`,
       }),
     })
+  },
+  showCommentCounter: (commArr) => {
+    const commCount = document.querySelector('.comment-count');
+    commCount.innerHTML = '';
+    commCount.innerHTML = commArr.length;
+
+    return commArr.length;
   }
 
 }
