@@ -4,6 +4,7 @@ const renderHomePage = () => {
    <ul class="nav-bar">
     <li class="logo"></li>
     <li class="items">Shows (<p id="shows-counter"></p>)</li>
+  
    </ul> 
   </nav>
   
