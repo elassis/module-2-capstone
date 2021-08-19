@@ -1,8 +1,6 @@
 # What is this Project About ❓
 * This is a Project that works retrieving and sendin data with two Foreign APIS in order to render and interact with items in the screen.
 
-## Live preview 👀
-[HERE]()
 
 ## Prerrequisites ☑️
 * Webpack
