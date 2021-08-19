@@ -8,14 +8,12 @@
 
 [Watch Video](https://drive.google.com/file/d/1-ugp6XQNO4kUDtyqxslmk6QjYmpHex-x/view?usp=sharing)
 
-
-
 ## Prerrequisites ☑️
 * Webpack
 ## Setup ☑️
 ### clone repository
 ```bash
-$ git clone <REPOSITORY-URL>
+$ git clone <git@github.com:elassis/module-2-capstone.git>
 ```
 ### install Webpack
 ```bash
