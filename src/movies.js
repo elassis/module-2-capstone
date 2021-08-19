@@ -46,14 +46,14 @@ const Movies = {
   },
   getShows: (objArr) => {
     const arr = Array.from(objArr);
-    arr.forEach((item) => {
-      fetch(`https://api.tvmaze.com/shows/${item.idTv}`)
+    arr.forEach(async (item) => {
+      await fetch(`https://api.tvmaze.com/shows/${item.idTv}`)
         .then((response) => response.json())
         .then((json) => renderElement(json, item.idInv));
     });
   },
-  saveLike: (itemId) => {
-    fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/likes/', {
+  saveLike: async (itemId) => {
+    await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/likes/', {
       method: 'POST',
       body: JSON.stringify({
         item_id: itemId,
@@ -63,8 +63,8 @@ const Movies = {
       },
     }).then((response) => Movies.refreshLikeOnClick(response.status));
   },
-  getLikes: () => {
-    fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/likes/', {
+  getLikes: async () => {
+    await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/likes/', {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
@@ -87,9 +87,9 @@ const Movies = {
       Movies.getLikes();
     }
   },
-  getShowPopup: (movieName, id, commentArr) => {
+  getShowPopup: async (movieName, id, commentArr) => {
     const urlReq = `https://api.tvmaze.com/singlesearch/shows?q=${movieName}`;
-    fetch(urlReq)
+    await fetch(urlReq)
       .then((response) => response.json())
       .then((data) => {
         renderPopup(data, id, commentArr);
@@ -97,7 +97,7 @@ const Movies = {
       });
   },
   getComments: async (movieName, id) => {
-    fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id=${id}`, {
+    await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id=${id}`, {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
@@ -106,7 +106,7 @@ const Movies = {
       .then((json) => { Movies.getShowPopup(movieName, id, json); });
   },
   refreshComments: async (id) => {
-    fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id=${id}`, {
+    await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id=${id}`, {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
