@@ -1,5 +1,7 @@
 import {renderElement} from "./homepage.js";
 import { showLikes } from "./handlers.js";
+import renderPopup from "./popup.js";
+
 const obArr = [
   {
     id:0,
@@ -73,7 +75,39 @@ const Movies = {
     if(status === 201){
       Movies.getLikes();
     }
+    
+  },
+  getShowPopup: (movieName, id) => {
+    const urlReq = `https://api.tvmaze.com/singlesearch/shows?q=${movieName}`;
+    
+      fetch(urlReq)
+      .then(response => response.json())
+      .then((data) => { renderPopup(data, id); })
+  
+  },
+  getComments: async (id) => {
+    console.log(id)
+    const urlReq = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id=${id}`;
+  
+    const response = await fetch(urlReq);
+    const commArr = await response.json();
+    return response;
+  },
+  addComment: async (id, userName, userComment) => {
+    const urlReq = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments';
+    const response = await fetch(urlReq, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify({
+        item_id: `${id}`,
+        username: `${userName}`,
+        comment: `${userComment}`,
+      }),
+    })
   }
+
 }
 
 

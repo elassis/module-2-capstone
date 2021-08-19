@@ -24,6 +24,7 @@ const renderElement = (element,idMicroverse) =>{
                           </div>                          
                         </li> 
                         <li class="comment-cont">
+                          <input id="get-id" type="hidden" value="${idMicroverse}">
                           <button class="comment-btn">Comment</button></li>
                       </ul>
                     </div>`;
