@@ -13,6 +13,10 @@
 ## Prerrequisites ☑️
 * Webpack
 ## Setup ☑️
+### clone repository
+```bash
+$ git clone <REPOSITORY-URL>
+```
 ### install Webpack
 ```bash
 $ npm install webpack

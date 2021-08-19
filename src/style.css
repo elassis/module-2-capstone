@@ -145,11 +145,11 @@ button {
 .comment-btn {
   display: block;
   margin: 8px auto;
-  color: grey;
+  color: #fff;
   padding: 10px 15px;
   border-radius: 30px;
   border: none;
-  background-color: rgb(221, 213, 213);
+  background-color: rgb(78, 95, 240);
   transition: all 300ms ease;
 }
 
