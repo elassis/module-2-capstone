@@ -1,5 +1,5 @@
 import {renderElement} from "./homepage.js";
-import { showLikes } from "./handlers.js";
+import { showLikes, refresh } from "./handlers.js";
 import renderPopup from "./popup.js";
 
 const obArr = [
@@ -78,22 +78,27 @@ const Movies = {
     }
     
   },
-  getShowPopup: (movieName, id) => {
+  getShowPopup: (movieName, id, commentArr) => {
     const urlReq = `https://api.tvmaze.com/singlesearch/shows?q=${movieName}`;
-    
       fetch(urlReq)
       .then(response => response.json())
-      .then((data) => { renderPopup(data, id); })
+      .then((data) => { renderPopup(data, id, commentArr); })
   
   },
-  getComments: async (id) => {
-    console.log(id)
-    const urlReq = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id=${id}`;
-  
-    const response = await fetch(urlReq);
-    const commArr = await response.json();
-    return response;
+  getComments: async (movieName, id) => {
+     fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id='+id ,{
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+     }).then((response)=>response.json()).then((json)=> {Movies.getShowPopup(movieName,id,json)}); 
   },
+  refreshComments: async (id) => {
+    fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments?item_id='+id ,{
+     headers: {
+       'Content-type': 'application/json; charset=UTF-8',
+     },
+    }).then((response)=>response.json()).then((json)=> {refresh(json);}); 
+ },
   addComment: async (id, userName, userComment) => {
     const urlReq = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/CTh1EvksCU2CGkEmnLer/comments';
     const response = await fetch(urlReq, {

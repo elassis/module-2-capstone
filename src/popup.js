@@ -1,7 +1,6 @@
-const renderPopup = (tvShow, id) => {
+const renderPopup = (tvShow, id, commentArr) => {
   const poPup = document.createElement('section');
-  const commentsCont = document.querySelector('.popup-comments');
-
+  poPup.id = 'popup';
   poPup.innerHTML = `<article class="item-popup">
     <div class="popup-wrapper">
         <div class="popup-header">
@@ -28,12 +27,10 @@ const renderPopup = (tvShow, id) => {
         <div class="popup-details">
             <div class="comments-container">
               <h3>Comments</h3>
-              <p class="comment-count"> ( 3 )</p>
+              <p class="comment-count">${commentArr.length}</p>
             </div>
             <div class="popup-info">
                 <div class="popup-comments">
-                  <p class="comment" >Comment 1</p>
-                  <p class="comment" >Comment 2</p>
                 </div>
             </div>
         </div>
@@ -52,6 +49,16 @@ const renderPopup = (tvShow, id) => {
     </article>`;
 
     document.body.appendChild(poPup);
+
+    const commentsContainer = document.querySelector('.popup-comments');
+    commentsContainer.innerHTML = '';
+    commentArr.forEach(element => {
+      const p = document.createElement('p');
+      p.classList.add('comment')
+      p.innerHTML = `${element.creation_date} ${element.username}: ${element.comment}`;
+      commentsContainer.appendChild(p);
+    });
+    
 }
 
 export default renderPopup;

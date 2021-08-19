@@ -215,8 +215,9 @@ button {
 .popup-comments {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   margin-bottom: 1vh;
+  overflow-y:auto;
+  height: 20vh;
 }
 
 .comment {

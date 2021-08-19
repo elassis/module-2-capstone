@@ -8,20 +8,22 @@ const listeners = () =>{
     }
     if(e.target.className === 'comment-btn'){
       const movieTitle = e.target.parentElement.parentElement.children[1].children[0].textContent;
-      const moviName = movieTitle.split(": ").pop();
+      const movieName = movieTitle.split(": ").pop();
       const id = e.target.parentElement.firstElementChild.value;
-      const popupComments = Movies.getComments(id);
-      Movies.getShowPopup(moviName, id);
-      console.log(popupComments)
-
+      Movies.getComments(movieName,id);
     }
     if(e.target.id === 'submit-comment'){
       e.preventDefault();
       const id = document.querySelector('#popup-id').value;
-      const userName = document.querySelector('#name').value;
-      const comment = document.querySelector('#input-comment').value;
+      const userName = document.querySelector('#name');
+      const comment = document.querySelector('#input-comment');
+      const movieName = document.querySelector('.popup-title').children[0].innerHTML;
 
-      Movies.addComment( id, userName, comment);
+      Movies.addComment( id, userName.value, comment.value);
+      
+      Movies.refreshComments(id);
+      userName.value = '';
+      comment.value = '';
     }
     if(e.target.className === 'close-icon'){
       const popup = document.querySelector('.item-popup');
@@ -31,6 +33,21 @@ const listeners = () =>{
         showComments();
     }
   })
+}
+
+const refresh = (commentArr) => {
+  const commentsContainer = document.querySelector('.popup-comments');
+  const commentCount = document.querySelector('.comment-count');
+
+  commentCount.innerHTML = '';
+  commentCount.innerHTML = commentArr.length;
+  commentsContainer.innerHTML = '';
+    commentArr.forEach(element => {
+      const p = document.createElement('p');
+      p.classList.add('comment')
+      p.innerHTML = `${element.creation_date} ${element.username}: ${element.comment}`;
+      commentsContainer.appendChild(p);
+    });
 }
 
 const showLikes = (arr) =>{
@@ -44,10 +61,6 @@ const showLikes = (arr) =>{
       }
     })
   })
-  
-  
-
-
 }
 
-export {listeners,showLikes};
+export {listeners,showLikes, refresh};
