@@ -2,14 +2,17 @@
 const renderHomePage = () => {
   document.body.innerHTML = `<nav>
    <ul class="nav-bar">
-    <li class="logo"></li>
-    <li class="items">Shows (<p id="shows-counter"></p>)</li>
-  
+    <li class="logo"><i class="fas fa-video"></i></li>
+    <li class="items">Shows (<p id="shows-counter"></p>)</li>  
    </ul> 
   </nav>
   
   <div class="container">
-  </div>`;
+  </div>
+  <footer>
+    <p class="text-footer">Microverse - All rights Reserved 2021</p>
+  </footer>`;
+  
 }
 const renderElement = (element,idMicroverse) =>{
  
