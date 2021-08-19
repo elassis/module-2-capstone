@@ -1,3 +1,4 @@
+
 import Movies from "./movies";
 
 const listeners = () =>{
@@ -27,6 +28,9 @@ const listeners = () =>{
     if(e.target.className === 'close-icon'){
       const popup = document.querySelector('.item-popup');
       popup.remove();
+    }
+    if(e.target.id === 'test'){
+        showComments();
     }
   })
 }

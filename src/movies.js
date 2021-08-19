@@ -44,6 +44,7 @@ const Movies = {
   },
   showItemsCounter:(arr)=>{
     document.querySelector('#shows-counter').innerHTML = arr.length;
+    return arr.length;
   },
   getShows:(objArr)=>{
     const arr = Array.from(objArr);
