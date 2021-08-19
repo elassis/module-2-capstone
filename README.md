@@ -1,6 +1,13 @@
 # What is this Project About ❓
 * This is a Project that works retrieving and sendin data with two Foreign APIS in order to render and interact with items in the screen.
 
+## Live Preview Link 👀
+[HERE](https://elassis.github.io/module-2-capstone/dist/)
+
+## Video Explaining Features of the Site
+
+[Watch Video](https://drive.google.com/file/d/1-ugp6XQNO4kUDtyqxslmk6QjYmpHex-x/view?usp=sharing)
+
 
 ## Prerrequisites ☑️
 * Webpack
